@@ -11,26 +11,9 @@ def return_list_of_urls(match_id):
     return full_url_list
 
 
-matches = [
-    6163,
-    6164,
-    6165,
-    6166,
-    6167,
-    6168,
-    6169,
-    6170,
-    6171,
-    6172,
-    6173,
-    6174,
-    6175,
-    6176,
-    6177,
-    6178,
-    6179,
-    6180
-]
+start_match = 6901
+end_match = 7026
+matches = list(range(start_match, end_match + 1))
 
 list_of_urls = return_list_of_urls(matches)
 
@@ -41,6 +24,7 @@ for url in list_of_urls:
     response = urllib.request.urlopen(url)
     webContent = response.read()
     filename = url[-8:]
-    f = open("C:/Users/Ken/PycharmProjects/supercoach_data/files/{}".format(filename), 'wb')
+    # f = open("C:/Users/Ken/PycharmProjects/supercoach_data/files/{}".format(filename), 'wb')
+    f = open("C:/Users/Richa/PycharmProjects/sc_data/files/{}".format(filename), 'wb')
     f.write(webContent)
     print(filename)
