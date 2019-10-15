@@ -1,5 +1,7 @@
 import csv
 import glob
+import time
+
 
 column_header_names = [
     'Fanfooty Match ID',
@@ -78,7 +80,9 @@ def get_year(data):
 
 def get_match_data_list():
     data_list = []
-    path = "C:\\Users\Ken\Dropbox\Supercoach\All Match Data\*.txt"
+    path = "C:\\Users\Richa\Dropbox\Supercoach\All Match Data\*.txt"
+    # path = "C:\\Users\Richa\Dropbox\Supercoach\2019\2019 match files after rd 15\*.txt"
+
 
     for item in glob.glob(path):
         file = open(item, 'r')
@@ -106,7 +110,8 @@ def return_player_match_data(data_list):
 
 
 def write_to_csv(data):
-    with open("match_data.csv", "w", newline='') as f:
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    with open("outputs/match_data_{}.csv".format(timestr), "w", newline='') as f:
         writer = csv.writer(f)
         writer.writerow(column_header_names)
         for item in data:
